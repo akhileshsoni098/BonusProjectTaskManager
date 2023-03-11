@@ -1,0 +1,11 @@
+{
+  "name": "bonusprojecttaskmanager",
+  "version": "1.0.0",
+  "description": "MEAN / MERN Stack Assignment\r PART 1: Create a form to save & edit task in database\r • Create components to create & edit task\r • TASK Schema\r o Title (text)\r o Description (text)\r o Status (ENUM [Open, In-Progress, Completed])\r o Datetime stamp (timestamp)\r • RESTful API to create and edit task.\r • Integrate the frontend and backend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
