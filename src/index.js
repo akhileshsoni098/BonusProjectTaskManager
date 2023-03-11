@@ -7,7 +7,8 @@ app.use(express.json())
 
 
 
-mongoose.connect("", {useNewUrlParsar:true})
+mongoose.connect("mongodb+srv://Akshay:akshay7798953554@akshaydb.e6tjw4w.mongodb.net/group14Database", {useNewUrlParser:true})
+
 
 
 .then(()=>{console.log("mongodb is successfully connected")})
