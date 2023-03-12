@@ -5,6 +5,7 @@ const taskModel = require("../model/taskModel")
 
 // ============================== create task ===========================
 
+
 const createTask = async (req, res)=>{
     try{
     const data = req.body
@@ -14,7 +15,7 @@ if(!title){return res.status(400).send({status:false , message:"title is mandato
 if(!description){return res.status(400).send({status:false , message:"description is mandatoary field"})}
 
 
-const saveData = await taskModel(data)
+const saveData = await taskModel.create(data)
 
 res.status(201).send({status:true , message:"Task Added", data:saveData})
 
@@ -23,13 +24,17 @@ res.status(201).send({status:true , message:"Task Added", data:saveData})
     }
 }
 
+
+
 // ==============================get task data========================================
-const getTask = async ()=>{
+
+
+
+const getTask = async (req,res)=>{
 try{
 const taskId = req.params.taskId
 
 const taskdata = await taskModel.findById(taskId)
-
 res.status(200).send({status:true, data:taskdata})
 }catch(err){
     res.status(500).send({status:false , message:err.message})
@@ -44,7 +49,9 @@ res.status(200).send({status:true, data:taskdata})
 //================================== update task =====================================================
 
 
-const updateTask = async ()=>{
+
+
+const updateTask = async (req,res)=>{
     try{
     let data = req.body
     let taskId = req.params.taskId
@@ -52,7 +59,7 @@ const updateTask = async ()=>{
 if(status){
     if(!["Open", "In-Progress", "Completed"].includes(status)){return res.status(400).send({staus:false, message:"status should have any of Open In-Progress Completed "})}
 }
-let updateData = await taskModel.findByIdAndUpdate({_id:taskId},{$set:{title:title,description:description,status:status}})
+let updateData = await taskModel.findByIdAndUpdate(taskId,{$set:{title:title,description:description,status:status}},{new:true})
 
 res.status(200).send({status:true, message:"task updated successfully" ,data:updateData})
 
@@ -62,7 +69,10 @@ res.status(200).send({status:true, message:"task updated successfully" ,data:upd
 
 }
 
+
 //====================================delete task data=====================
+
+
 
 const deleteTask = async (req, res)=>{
     try{
@@ -70,13 +80,12 @@ const deleteTask = async (req, res)=>{
 
 const deleteData = await taskModel.findByIdAndDelete(taskId)
 
-res.status(200).send({status:true , message:"task has been revomed successfullu"})
+res.status(200).send({status:true , message:"task has been revomed successfully"})
     }catch(err){
         res.status(500).send({status:false , message:err.message})
     }
 
 }
-
 
 
 

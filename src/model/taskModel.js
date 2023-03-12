@@ -21,9 +21,9 @@ description:{
 status:{
     type:String,
     enum:["Open", "In-Progress", "Completed"],
-    default:"open"
+    default:"Open"
 }
 }, {timestamp:true})
 
 
-module.exports = mongoose.model("Task", TaskSchema)
+module.exports = mongoose.model("task", TaskSchema)
